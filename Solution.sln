@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSCore.Domain", "TSCore.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSCore.Persistence", "TSCore.Persistence\TSCore.Persistence.csproj", "{4485BD2F-520A-45A0-ABBB-8DD114477FD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSCore.Infrastructure", "TSCore.Infrastructure\TSCore.Infrastructure.csproj", "{1B6FEF03-C609-4527-BCDA-202DEE2B2825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{4485BD2F-520A-45A0-ABBB-8DD114477FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4485BD2F-520A-45A0-ABBB-8DD114477FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4485BD2F-520A-45A0-ABBB-8DD114477FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6FEF03-C609-4527-BCDA-202DEE2B2825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6FEF03-C609-4527-BCDA-202DEE2B2825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6FEF03-C609-4527-BCDA-202DEE2B2825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6FEF03-C609-4527-BCDA-202DEE2B2825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
