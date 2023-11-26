@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TSCore.Domain\TSCore.Domain.csproj" />
+      <ProjectReference Include="..\TSCore.Infrastructure\TSCore.Infrastructure.csproj" />
       <ProjectReference Include="..\TSCore.Persistence\TSCore.Persistence.csproj" />
     </ItemGroup>
 
