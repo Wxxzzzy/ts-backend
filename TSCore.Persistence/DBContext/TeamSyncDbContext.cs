@@ -8,7 +8,7 @@ public class TeamSyncDbContext : DbContext, ITeamSyncDbContext
     public TeamSyncDbContext(DbContextOptions<TeamSyncDbContext> options) : base(options)
     {
     }
-
-    public DbSet<User> Users { get; set; }
-    public DbSet<Role> Roles { get; set; }
+    
+    public DbSet<User> Users { get; }
+    public DbSet<Role> Roles { get; }
 }
