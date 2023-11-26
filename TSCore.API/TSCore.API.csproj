@@ -8,10 +8,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TSCore.Application\TSCore.Application.csproj" />
+      <ProjectReference Include="..\TSCore.Persistence\TSCore.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Controllers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.1.1" />
     </ItemGroup>
 
 </Project>
