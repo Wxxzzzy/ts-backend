@@ -5,6 +5,6 @@ namespace TSCore.Persistence.DBContext;
 
 public interface ITeamSyncDbContext
 {
-    DbSet<User> Users { get; }
-    DbSet<Role> Roles { get; }
+    DbSet<User> Users { get; set; }
+    DbSet<Role> Roles { get; set; }
 }

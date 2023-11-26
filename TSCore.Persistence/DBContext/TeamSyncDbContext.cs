@@ -9,6 +9,6 @@ public class TeamSyncDbContext : DbContext, ITeamSyncDbContext
     {
     }
     
-    public DbSet<User> Users { get; }
-    public DbSet<Role> Roles { get; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
 }
