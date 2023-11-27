@@ -1,9 +1,10 @@
 using System.Security.Cryptography;
-using TSCore.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using TSCore.Application.Common.Interfaces;
 
 namespace TSCore.Infrastructure.Services.Classes;
 
+//TODO: move
 public class AuthService : IAuthService
 {
     public bool Verify(string password, string hash)

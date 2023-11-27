@@ -1,10 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using TSCore.Application.Common.Interfaces;
 using TSCore.Domain.Enums.Authentication;
 using TSCore.Domain.Tables;
-using TSCore.Infrastructure.Services.Interfaces;
-using TSCore.Persistence.DBContext;
 
 namespace TSCore.Application.Authentication.Commands;
 
@@ -38,6 +37,7 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand, string>
         var userFromDb = await _context.Users
             .FirstOrDefaultAsync(x => x.Username == request.Username, cancellationToken);
 
+        //TODO: Custom exception
         if (userFromDb != null)
         {
             throw new BadHttpRequestException($"{nameof(User)} {request.Username} already exists");

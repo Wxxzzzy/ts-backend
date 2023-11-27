@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using TSCore.Application.Common.Interfaces;
 using TSCore.Infrastructure.Services.Classes;
-using TSCore.Infrastructure.Services.Interfaces;
 
 namespace TSCore.Infrastructure;
 

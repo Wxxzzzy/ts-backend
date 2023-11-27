@@ -1,9 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using TSCore.Domain.Tables;
-using TSCore.Infrastructure.Exceptions;
-using TSCore.Infrastructure.Services.Interfaces;
-using TSCore.Persistence.DBContext;
+using TSCore.Application.Common.Exceptions;
+using TSCore.Application.Common.Interfaces;
 
 namespace TSCore.Application.Authentication.Commands;
 
@@ -29,10 +27,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
         var user = await _context.Users
             .FirstOrDefaultAsync(x => x.Username == request.Username, cancellationToken);
 
-        if (user == null)
-        {
-            throw new NotFoundException($"{nameof(User)} not found");
-        }
+        NotFoundException.ThrowIfNull(user);
         
         var isVerified = _authService.Verify(request.Password, user.PasswordHash);
         return isVerified 

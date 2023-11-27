@@ -1,6 +1,6 @@
+using TSCore.Domain.Tables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TSCore.Domain.Tables;
 
 namespace TSCore.Persistence.Configurations;
 
@@ -11,6 +11,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(e => e.Id);
         builder.HasIndex(e => e.Username);
 
+        builder.ToTable("Users", "TS");
+        
         builder.Property(e => e.Username)
             .HasMaxLength(255)
             .IsRequired();

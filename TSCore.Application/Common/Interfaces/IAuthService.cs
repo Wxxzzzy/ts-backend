@@ -1,4 +1,4 @@
-namespace TSCore.Infrastructure.Services.Interfaces;
+namespace TSCore.Application.Common.Interfaces;
 
 public interface IAuthService
 {
