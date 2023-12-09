@@ -3,16 +3,17 @@ using TSCore.Persistence.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using TSCore.Application.Common.Interfaces;
+using TSCore.Application.Common.Models;
 
 namespace TSCore.Persistence;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPersistence(this IServiceCollection services, string connectionString)
+    public static IServiceCollection AddPersistence(this IServiceCollection services, DatabaseConnectionStrings connectionStrings)
     {
         services.AddDbContext<TeamSyncDbContext>(options =>
         {
-            options.UseSqlServer(connectionString,
+            options.UseSqlServer(connectionStrings.Main,
                 x => x.MigrationsHistoryTable("__MigrationHistory", "TS"));
 
             options.ConfigureWarnings(warnings =>
