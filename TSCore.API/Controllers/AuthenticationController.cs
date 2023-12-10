@@ -1,37 +1,51 @@
-using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TSCore.Application.Authentication;
 using TSCore.Application.Authentication.Commands;
+using TSCore.Application.Authentication.Queries;
+using TSCore.Application.Common.Interfaces;
 
-namespace TSCore.API.Controllers.Authentication;
+namespace TSCore.API.Controllers;
 
 public class AuthenticationController : BaseController
 {
-    public readonly IMediator _mediator;
+    private readonly ITokenService _tokenService;
+
+    public AuthenticationController(ITokenService tokenService)
+    {
+        _tokenService = tokenService;
+    }
     
-    public AuthenticationController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
+    [AllowAnonymous]
     [HttpPost("login")]
-    public async Task<string> SingIn(string login, string password)
+    public async Task<ActionResult<UserAccessDataDto>> Login([FromBody] LoginCommand command)
     {
-        var command = new LoginCommand
-        {
-            Username = login,
-            Password = password
-        };
-
-        var result = await _mediator.Send(command);
-        return result;
+        var result = await Mediator.Send(command);
+        var tokenData = _tokenService.GetToken(result);
+        return Ok(tokenData);
+    }
+    
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public async Task<ActionResult<UserAccessDataDto>> Register([FromBody] SignUpCommand command)
+    {
+        var result = await Mediator.Send(command);
+        var tokenData = _tokenService.GetToken(result);
+        return Ok(tokenData);
+    }
+    
+    [HttpGet("token")]
+    public async Task<ActionResult<UserAccessDataDto>> RefreshToken()
+    {
+        var query = new GetUserAccessDataQuery();
+        var tokenData = await Mediator.Send(query);
+        tokenData = _tokenService.GetToken(tokenData);
+        return tokenData;
     }
 
-    [HttpPost("signUp")]
-    public async Task<string> SignUp([FromBody] SignUpDto request)
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
     {
-        var command = new SignUpCommand(request.Login, request.Password, request.Email);
-        var result = await _mediator.Send(command);
-        return result;
+        return await Task.FromResult(Ok());
     }
 }

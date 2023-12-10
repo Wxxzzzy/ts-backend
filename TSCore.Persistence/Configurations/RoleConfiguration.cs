@@ -11,7 +11,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
     private readonly Role[] _roles =
     {
         new(){Id = (int)ERoles.Admin, RoleName = ERoles.Admin.ToDescription(), Description = "Application administrator",
-            CreatedAt = DateTime.Now, CreatedBy = "System" },
+            CreatedAt = DateTime.Now, CreatedBy = "System"},
         new(){Id = (int)ERoles.User, RoleName = ERoles.User.ToDescription(), Description = "Common user",
             CreatedAt = DateTime.Now, CreatedBy = "System"}
     };
@@ -27,6 +27,8 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
             .IsRequired();
         builder.Property(e => e.Description)
             .HasMaxLength(255)
+            .IsRequired(false);
+        builder.Property(e => e.UpdatedBy)
             .IsRequired(false);
 
         builder.HasData(_roles);
