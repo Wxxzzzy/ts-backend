@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TSCore.Application.Common.Extensions;
-using TSCore.Domain.Enums.Authentication;
+using TSCore.Domain.Enums;
 using TSCore.Domain.Tables;
 
 namespace TSCore.Persistence.Configurations;

@@ -18,6 +18,7 @@ public class TeamSyncDbContext : DbContext, ITeamSyncDbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<UserTeam> UserTeams { get; set; }
+    public DbSet<Ticket> Tickets { get; set; }
     
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

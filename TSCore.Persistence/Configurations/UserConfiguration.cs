@@ -31,5 +31,15 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasOne(e => e.Role)
             .WithMany(e => e.Users)
             .HasForeignKey(e => e.RoleId);
+
+        builder.HasMany(e => e.CreatedTickets)
+            .WithOne(e => e.TicketCreator)
+            .HasForeignKey(e => e.TicketCreatorId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        builder.HasMany(e => e.AssignedTickets)
+            .WithOne(e => e.AssignedTo)
+            .HasForeignKey(e => e.AssignedToId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

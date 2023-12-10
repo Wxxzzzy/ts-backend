@@ -25,5 +25,10 @@ public class TeamConfiguration : IEntityTypeConfiguration<Team>
         builder.HasOne(e => e.User)
             .WithMany(e => e.Teams)
             .HasForeignKey(e => e.Owner);
+
+        builder.HasMany(e => e.Tickets)
+            .WithOne(e => e.Team)
+            .HasForeignKey(e => e.TeamId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

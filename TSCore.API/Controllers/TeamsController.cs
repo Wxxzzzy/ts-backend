@@ -4,7 +4,7 @@ using TSCore.Application.Common.Interfaces;
 using TSCore.Application.Team;
 using TSCore.Application.Team.Commands;
 using TSCore.Application.Team.Queries;
-using TSCore.Domain.Enums.Authentication;
+using TSCore.Domain.Enums;
 
 namespace TSCore.API.Controllers;
 

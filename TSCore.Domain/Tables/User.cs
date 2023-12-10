@@ -13,7 +13,18 @@ public class User : BaseAuditableEntity
     public int? RoleId { get; set; }
     public Role Role { get; set; }
 
+
+    #region For Teams
+
     public ICollection<Team> Teams { get; set; } // for team owner
-    
     public ICollection<UserTeam> BelongTeams { get; set; }
+
+    #endregion
+    
+    #region For Tickets
+
+    public ICollection<Ticket> CreatedTickets { get; set; }
+    public ICollection<Ticket> AssignedTickets { get; set; }
+
+    #endregion
 }

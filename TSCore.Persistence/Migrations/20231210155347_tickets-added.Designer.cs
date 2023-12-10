@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TSCore.Persistence.DBContext;
 
@@ -11,9 +12,11 @@ using TSCore.Persistence.DBContext;
 namespace TSCore.Persistence.Migrations
 {
     [DbContext(typeof(TeamSyncDbContext))]
-    partial class TeamSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231210155347_tickets-added")]
+    partial class ticketsadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +63,7 @@ namespace TSCore.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 10, 19, 44, 27, 193, DateTimeKind.Local).AddTicks(9328),
+                            CreatedAt = new DateTime(2023, 12, 10, 18, 53, 47, 31, DateTimeKind.Local).AddTicks(926),
                             CreatedBy = "System",
                             Description = "Application administrator",
                             RoleName = "Admin"
@@ -68,7 +71,7 @@ namespace TSCore.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 12, 10, 19, 44, 27, 193, DateTimeKind.Local).AddTicks(9414),
+                            CreatedAt = new DateTime(2023, 12, 10, 18, 53, 47, 31, DateTimeKind.Local).AddTicks(1035),
                             CreatedBy = "System",
                             Description = "Common user",
                             RoleName = "User"
@@ -153,6 +156,7 @@ namespace TSCore.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdatedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

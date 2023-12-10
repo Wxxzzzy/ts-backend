@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TSCore.Application.Common.Interfaces;
-using TSCore.Domain.Enums.Authentication;
+using TSCore.Domain.Enums;
 using TSCore.Domain.Tables;
 
 namespace TSCore.Application.Authentication.Commands;

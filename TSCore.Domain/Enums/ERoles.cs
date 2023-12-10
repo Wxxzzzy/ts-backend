@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace TSCore.Domain.Enums.Authentication;
+namespace TSCore.Domain.Enums;
 
 public enum ERoles
 {

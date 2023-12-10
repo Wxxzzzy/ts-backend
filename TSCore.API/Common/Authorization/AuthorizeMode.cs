@@ -1,6 +1,6 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
-using TSCore.Domain.Enums.Authentication;
+using TSCore.Domain.Enums;
 
 namespace TSCore.API.Common.Authorization;
 

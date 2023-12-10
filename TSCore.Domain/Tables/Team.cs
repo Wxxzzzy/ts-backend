@@ -1,3 +1,4 @@
+using System.Collections;
 using TSCore.Domain.Common.Classes;
 
 namespace TSCore.Domain.Tables;
@@ -10,4 +11,6 @@ public class Team : BaseAuditableEntity
     public User User { get; set; } // for team owner
 
     public ICollection<UserTeam> TeamMembers { get; set; }
+    
+    public ICollection<Ticket> Tickets { get; set; }
 }
