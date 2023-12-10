@@ -16,4 +16,6 @@ public class Ticket : BaseAuditableEntity
     
     public int? AssignedToId { get; set; }
     public User AssignedTo { get; set; }
+    
+    public ICollection<Comment> TicketComments { get; set; }
 }

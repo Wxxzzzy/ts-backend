@@ -27,4 +27,10 @@ public class User : BaseAuditableEntity
     public ICollection<Ticket> AssignedTickets { get; set; }
 
     #endregion
+
+    #region For Comments
+
+    public ICollection<Comment> UserComments { get; set; }
+
+    #endregion
 }

@@ -15,4 +15,5 @@ public interface ITeamSyncDbContext
     DbSet<Domain.Tables.Team> Teams { get; set; }
     DbSet<UserTeam> UserTeams { get; set; }
     DbSet<Domain.Tables.Ticket> Tickets { get; set; }
+    DbSet<Domain.Tables.Comment> Comments { get; set; }
 }
