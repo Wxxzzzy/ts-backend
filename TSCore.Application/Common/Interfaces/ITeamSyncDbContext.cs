@@ -12,4 +12,6 @@ public interface ITeamSyncDbContext
     
     DbSet<User> Users { get; set; }
     DbSet<Role> Roles { get; set; }
+    DbSet<Domain.Tables.Team> Teams { get; set; }
+    DbSet<UserTeam> UserTeams { get; set; }
 }

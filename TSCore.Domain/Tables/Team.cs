@@ -1,4 +1,3 @@
-using System.Collections;
 using TSCore.Domain.Common.Classes;
 
 namespace TSCore.Domain.Tables;

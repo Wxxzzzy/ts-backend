@@ -1,6 +1,5 @@
 using AutoMapper;
 using TSCore.Application.Common.Mapping;
-using TSCore.Domain.Enums.Authentication;
 using TSCore.Domain.Tables;
 
 namespace TSCore.Application.Authentication;

@@ -19,7 +19,7 @@ public class ClaimRequirementsFilter : IAuthorizationFilter
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         var claim = context.HttpContext.User.Claims.FirstOrDefault(c => c.Type == _claimType);
-        if (claim is not null && _allowedValues.Contains(claim.Value))
+        if (claim is not null && !_allowedValues.Contains(claim.Value))
         {
             context.Result = new ForbidResult();
         }
