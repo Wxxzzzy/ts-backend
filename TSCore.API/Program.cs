@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +25,17 @@ builder.Services
     .AddApplication()
     .AddInfrastructure();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        var origins = appConfiguration.FrontEndEndpoints.Split(';');
+        policy.WithOrigins(origins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers(obj =>
 {
@@ -81,6 +91,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 var app = builder.Build();
 
+app.UseCors();
 app.MapControllers();
 app.UseHttpsRedirection();
 app.ConfigureTsSwagger();

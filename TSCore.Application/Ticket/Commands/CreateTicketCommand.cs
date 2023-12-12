@@ -1,8 +1,6 @@
 using MediatR;
 using TSCore.Application.Common.Interfaces;
 using TSCore.Domain.Enums;
-using TSCore.Domain.Tables;
-using TSCore.Domain.Common.Classes;
 
 namespace TSCore.Application.Ticket.Commands;
 
