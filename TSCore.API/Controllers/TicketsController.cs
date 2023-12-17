@@ -22,7 +22,8 @@ public class TicketsController : BaseController
     }
 
     [HttpGet("{userId}/{teamId}/user-tickets")]
-    public async Task<ActionResult<List<GetTicketQueryDto>>> GetUserTickets([FromRoute] int userId, [FromRoute] int teamId)
+    public async Task<ActionResult<List<GetTicketQueryDto>>> GetUserTickets([FromRoute] int userId,
+        [FromRoute] int teamId)
     {
         var query = new GetUserTicketsQuery
         {
@@ -33,7 +34,18 @@ public class TicketsController : BaseController
         return Ok(result);
     }
 
-    [HttpPost]
+    [HttpGet("{id}")]
+    public async Task<ActionResult<GetTicketQueryDto>> GetTicketInfo([FromRoute] int id)
+    {
+        var query = new GetTicketInfoQuery
+        {
+            TicketId = id
+        };
+        var result = await Mediator.Send(query);
+        return Ok(result);
+    }
+
+[HttpPost]
     public async Task<ActionResult> CreateTicket([FromBody] CreateTicketCommand command)
     {
         await Mediator.Send(command);
