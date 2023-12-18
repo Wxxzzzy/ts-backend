@@ -35,7 +35,7 @@ public class UpdateTicketCommandHandler : IRequestHandler<UpdateTicketCommand>
         ticket.TicketTitle = request.TicketTitle;
         ticket.ShortDescription = request.ShortDescription;
         ticket.TicketStatus = request.TicketStatus;
-        ticket.AssignedToId = request.AssignedToId;
+        ticket.AssignedToId = request.AssignedToId ?? ticket.TicketCreatorId;
         ticket.TeamId = request.TeamId;
         ticket.UpdatedBy = "system";
         ticket.UpdatedAt = DateTime.Now;

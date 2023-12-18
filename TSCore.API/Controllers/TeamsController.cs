@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TSCore.API.Common.Authorization;
 using TSCore.Application.Common.Interfaces;
+using TSCore.Application.Common.Models;
 using TSCore.Application.Team;
 using TSCore.Application.Team.Commands;
 using TSCore.Application.Team.Queries;
@@ -41,6 +42,17 @@ public class TeamsController : BaseController
         return Ok(result);
     }
 
+    [HttpGet("{teamId}/members")]
+    public async Task<ActionResult<List<KeyValuesBase>>> GetTeamMembersKeyValues([FromRoute] int teamId)
+    {
+        var query = new GetTeamMembersQuery
+        {
+            TeamId = teamId
+        };
+        var result = await Mediator.Send(query);
+        return Ok(result);
+    }
+    
     [HttpPost]
     public async Task<ActionResult> CreateTeam([FromBody] CreateTeamCommand request)
     {
