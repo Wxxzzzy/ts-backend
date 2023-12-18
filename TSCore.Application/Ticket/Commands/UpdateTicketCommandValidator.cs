@@ -18,8 +18,5 @@ public class UpdateTicketCommandValidator : AbstractValidator<UpdateTicketComman
 
         RuleFor(x => x.TeamId)
             .NotNull();
-
-        RuleFor(x => x.TicketCreatorId)
-            .NotNull();
     }
 }

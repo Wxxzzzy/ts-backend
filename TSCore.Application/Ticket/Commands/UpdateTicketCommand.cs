@@ -12,7 +12,6 @@ public class UpdateTicketCommand : IRequest
     public string ShortDescription { get; set; }
     public int TicketStatus { get; set; }
     public int TeamId { get; set; }
-    public int TicketCreatorId { get; set; }
     public int? AssignedToId { get; set; }
 }
 
@@ -36,7 +35,6 @@ public class UpdateTicketCommandHandler : IRequestHandler<UpdateTicketCommand>
         ticket.TicketTitle = request.TicketTitle;
         ticket.ShortDescription = request.ShortDescription;
         ticket.TicketStatus = request.TicketStatus;
-        ticket.TicketCreatorId = request.TicketCreatorId;
         ticket.AssignedToId = request.AssignedToId;
         ticket.TeamId = request.TeamId;
         ticket.UpdatedBy = "system";
