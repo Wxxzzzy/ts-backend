@@ -41,6 +41,13 @@ public class GetTeamQueryHandler : IRequestHandler<GetTeamQuery, GetTeamQueryDto
         {
             throw new NotFoundException("Team not found");
         }
+
+        var owner = await _context.Teams
+            .Where(x => x.Id == request.TeamId)
+            .Select(x => x.User.Username)
+            .FirstAsync(cancellationToken);
+
+        team.TeamMembers.Add(owner);
         
         return team;
     }
