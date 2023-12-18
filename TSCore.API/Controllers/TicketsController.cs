@@ -45,7 +45,7 @@ public class TicketsController : BaseController
         return Ok(result);
     }
 
-[HttpPost]
+    [HttpPost]
     public async Task<ActionResult> CreateTicket([FromBody] CreateTicketCommand command)
     {
         await Mediator.Send(command);
