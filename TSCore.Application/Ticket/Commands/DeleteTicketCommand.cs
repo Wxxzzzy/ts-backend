@@ -28,6 +28,6 @@ public class DeleteTicketCommandHandler : IRequestHandler<DeleteTicketCommand>
         NotFoundException.ThrowIfNull(ticket);
 
         _context.Tickets.Remove(ticket);
-        _context.SaveChangesAsync(cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }
