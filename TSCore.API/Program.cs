@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using TSCore.API.Hubs;
+using TSCore.API.Interfaces;
 using TSCore.API.Services;
 using TSCore.API.Swagger;
 using TSCore.Application;
@@ -36,6 +38,9 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+builder.Services.AddSignalR();
+builder.Services.AddScoped<IInvitesService, InvitesService>();
 
 builder.Services.AddControllers(obj =>
 {
@@ -92,6 +97,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 var app = builder.Build();
 
 app.UseCors();
+app.MapHub<ClientNotificationHub>(ClientNotificationHub.Endpoint);
 app.MapControllers();
 app.UseHttpsRedirection();
 app.ConfigureTsSwagger();

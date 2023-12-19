@@ -20,6 +20,7 @@ public class TeamSyncDbContext : DbContext, ITeamSyncDbContext
     public DbSet<UserTeam> UserTeams { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
     
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

@@ -16,6 +16,7 @@ public partial class TokenService : ITokenService
 {
     private readonly AppConfiguration _configuration;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    
     private ClaimsPrincipal User => _httpContextAccessor?.HttpContext?.User;
 
     public const string AuthScheme = "TSAUTH";

@@ -36,12 +36,6 @@ public class GetTeamQueryHandler : IRequestHandler<GetTeamQuery, GetTeamQueryDto
 
         NotFoundException.ThrowIfNull(team);
 
-        // User cannot see not owned teams
-        if (userId != team.Owner)
-        {
-            throw new NotFoundException("Team not found");
-        }
-
         var owner = await _context.Teams
             .Where(x => x.Id == request.TeamId)
             .Select(x => x.User.Username)

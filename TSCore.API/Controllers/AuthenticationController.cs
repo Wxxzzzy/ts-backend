@@ -4,6 +4,7 @@ using TSCore.Application.Authentication;
 using TSCore.Application.Authentication.Commands;
 using TSCore.Application.Authentication.Queries;
 using TSCore.Application.Common.Interfaces;
+using TSCore.Domain.Tables;
 
 namespace TSCore.API.Controllers;
 
@@ -47,5 +48,16 @@ public class AuthenticationController : BaseController
     public async Task<IActionResult> Logout()
     {
         return await Task.FromResult(Ok());
+    }
+
+    [HttpGet("{userId}/userNotifications")]
+    public async Task<ActionResult<List<Notification>>> GetUserUnCheckedNotifications([FromRoute] int userId)
+    {
+        var query = new GetNotificationsQuery
+        {
+            UserId = userId
+        };
+        var result = await Mediator.Send(query);
+        return Ok(result);
     }
 }

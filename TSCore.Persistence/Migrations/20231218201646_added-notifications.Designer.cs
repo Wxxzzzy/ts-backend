@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TSCore.Persistence.DBContext;
 
@@ -11,9 +12,11 @@ using TSCore.Persistence.DBContext;
 namespace TSCore.Persistence.Migrations
 {
     [DbContext(typeof(TeamSyncDbContext))]
-    partial class TeamSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231218201646_added-notifications")]
+    partial class addednotifications
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +83,8 @@ namespace TSCore.Persistence.Migrations
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("Username")
+                        .HasMaxLength(255)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -126,7 +130,7 @@ namespace TSCore.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 12, 18, 23, 49, 10, 434, DateTimeKind.Local).AddTicks(59),
+                            CreatedAt = new DateTime(2023, 12, 18, 23, 16, 45, 954, DateTimeKind.Local).AddTicks(3628),
                             CreatedBy = "System",
                             Description = "Application administrator",
                             RoleName = "Admin"
@@ -134,7 +138,7 @@ namespace TSCore.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 12, 18, 23, 49, 10, 434, DateTimeKind.Local).AddTicks(125),
+                            CreatedAt = new DateTime(2023, 12, 18, 23, 16, 45, 954, DateTimeKind.Local).AddTicks(3730),
                             CreatedBy = "System",
                             Description = "Common user",
                             RoleName = "User"
